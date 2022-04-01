@@ -1,0 +1,6 @@
+[user]
+        name = Aumy
+        email = 46275902+AumyF@users.noreply.github.com
+[alias]
+        fixit = git commit --amend --no-edit
+        
