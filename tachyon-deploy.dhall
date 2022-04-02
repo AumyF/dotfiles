@@ -1,25 +1,14 @@
-let Recipe = { commands : List Text }
+let lib =
+      https://raw.githubusercontent.com/AumyF/dotstingray-libs/376f973a0476c5e7aaa98d7a05f9a677ba5ac1e6/dot.dhall
 
-let copy = \(arg : { from : Text, dest : Text }) -> "cp ${arg.from} ${arg.dest}"
-
-let cp-fish =
-      \(from : Text) -> copy { from, dest = "~/.config/fish/config.fish" }
-
-let cp-starship =
-      \(from : Text) -> copy { from, dest = "~/.config/starship.toml" }
-
-let cp-gitconfig = \(from : Text) -> copy { from, dest = "~/.gitconfig" }
-
-let cp-yabairc = \(from : Text) -> copy { from, dest = "~/.yabairc" }
-
-let cp-skhdrc = \(from : Text) -> copy { from, dest = "~/.skhdrc" }
+let copy = lib.useCmd "cp"
 
 in    { commands =
-        [ cp-starship "./starship.toml"
-        , cp-fish "./config.fish"
-        , cp-gitconfig "./.gitconfig"
-        , cp-yabairc "./.yabairc"
-        , cp-skhdrc "./.skhdrc"
+        [ copy.starship "./starship.toml"
+        , copy.fish "./config.fish"
+        , copy.git "./.gitconfig"
+        , copy.yabai "./.yabairc"
+        , copy.skhd "./.skhdrc"
         ]
       }
-    : Recipe
+    : lib.Recipe
