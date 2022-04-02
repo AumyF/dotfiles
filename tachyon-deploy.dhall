@@ -10,10 +10,16 @@ let cp-starship =
 
 let cp-gitconfig = \(from : Text) -> copy { from, dest = "~/.gitconfig" }
 
+let cp-yabairc = \(from : Text) -> copy { from, dest = "~/.yabairc" }
+
+let cp-skhdrc = \(from : Text) -> copy { from, dest = "~/.skhdrc" }
+
 in    { commands =
         [ cp-starship "./starship.toml"
         , cp-fish "./config.fish"
         , cp-gitconfig "./.gitconfig"
+        , cp-yabairc "./.yabairc"
+        , cp-skhdrc "./.skhdrc"
         ]
       }
     : Recipe
