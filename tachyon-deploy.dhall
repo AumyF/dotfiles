@@ -7,8 +7,8 @@ in    { commands =
         [ copy.starship "./starship.toml"
         , copy.fish "./config.fish"
         , copy.git "./.gitconfig"
-        , copy.yabai "./.yabairc"
-        , copy.skhd "./.skhdrc"
+        , copy.yabai "./mac/.yabairc"
+        , copy.skhd "./mac/.skhdrc"
         ]
       }
     : lib.Recipe
