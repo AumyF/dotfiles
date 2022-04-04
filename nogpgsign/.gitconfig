@@ -1,0 +1,6 @@
+[user]
+        name = Aumy
+        email = aumy@outlook.jp
+        signingkey = BEDC500020425D0FB4E3C8235911EC1BAD704C03
+[alias]
+        fixit = commit --amend --no-edit
