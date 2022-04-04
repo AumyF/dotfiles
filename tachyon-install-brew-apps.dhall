@@ -24,8 +24,6 @@ in    { commands =
             , "tealdeer"
             , "yabai"
             , "zoxide"
-            , "zsh-syntax-highlighting"
-            , "zsh-autosuggestions"
             , "firefox"
             , "flameshot"
             , "iterm2"
