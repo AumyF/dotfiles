@@ -3,5 +3,6 @@ path=(
     ~/.ghcup/bin
     ~/.cabal/bin
     ~/.cargo/bin
+    /usr/local/bin
     $path
 )
