@@ -24,6 +24,8 @@ export MCFLY_FUZZY=2
 export MCFLY_INTERFACE_VIEW=BOTTOM
 eval "$(mcfly init zsh)"
 
+eval "$(direnv hook zsh)"
+
 chpwd() {
     lsd --long --classify --date "+%F %T"
 }
