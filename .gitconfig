@@ -6,3 +6,5 @@
         fixit = commit --amend --no-edit
 [commit]
         gpgsign = true
+[pull]
+	ff = only
