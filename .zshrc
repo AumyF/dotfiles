@@ -17,14 +17,14 @@ setopt auto_cd
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+type starship &> /dev/null && eval "$(starship init zsh)"
+type zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
 export MCFLY_FUZZY=2
 export MCFLY_INTERFACE_VIEW=BOTTOM
-eval "$(mcfly init zsh)"
+type mcfly &> /dev/null && eval "$(mcfly init zsh)"
 
-eval "$(direnv hook zsh)"
+type direnv &> /dev/null && eval "$(direnv hook zsh)"
 
 chpwd() {
     lsd --long --classify --date "+%F %T"
