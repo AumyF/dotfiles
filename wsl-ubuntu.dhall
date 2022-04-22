@@ -1,5 +1,5 @@
 let lib =
-      https://raw.githubusercontent.com/AumyF/dotstingray-libs/376f973a0476c5e7aaa98d7a05f9a677ba5ac1e6/dot.dhall
+      https://raw.githubusercontent.com/AumyF/dotstingray-libs/b1d80c66bc194031bd056d7f3a8f0e24651122aa/dot.dhall
 
 let copy = lib.useCmd "cp"
 
