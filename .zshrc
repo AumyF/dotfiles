@@ -17,6 +17,7 @@ setopt auto_cd
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
+SAVEHIST=10000
 
 type starship &> /dev/null && eval "$(starship init zsh)"
 type zoxide &> /dev/null && eval "$(zoxide init zsh)"

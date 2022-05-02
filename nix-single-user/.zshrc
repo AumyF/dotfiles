@@ -17,6 +17,7 @@ setopt auto_cd
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
+SAVEHIST=10000
 
 . /home/user/.nix-profile/etc/profile.d/nix.sh
 
