@@ -5,7 +5,7 @@ let copy = lib.useCmd "cp"
 
 in    { commands =
         [ copy.starship "./starship.toml"
-        , copy.zshrc "./.zshrc"
+        , copy.zshrc "./nix-single-user/.zshrc"
         , copy.zshenv "./.zshenv"
         , copy.git "./nogpgsign/.gitconfig"
         ]

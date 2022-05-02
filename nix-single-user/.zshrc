@@ -18,6 +18,8 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 
+. /home/user/.nix-profile/etc/profile.d/nix.sh
+
 type starship &> /dev/null && eval "$(starship init zsh)"
 type zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
@@ -36,3 +38,4 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait
 zinit light zdharma-continuum/fast-syntax-highlighting
+
