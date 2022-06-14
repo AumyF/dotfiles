@@ -1,0 +1,7 @@
+[user]
+        name = Aumy
+        email = aumy@outlook.jp
+[alias]
+        fixit = commit --amend --no-edit
+[pull]
+	ff = only
