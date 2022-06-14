@@ -65,6 +65,17 @@ vim.cmd([[
 -- Autopairs
 require'nvim-autopairs'.setup {}
 
+
+-- Neo-tree
+require'neo-tree'.setup({
+  filesystem = {
+    filtered_items = {
+      hide_dotfiles = false,
+    },
+  },
+})
+
+
 -- Completions
 
 local cmp_autopairs = require'nvim-autopairs.completion.cmp'
