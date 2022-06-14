@@ -1,10 +1,13 @@
-let lib =
-      https://raw.githubusercontent.com/AumyF/dotstingray-libs/376f973a0476c5e7aaa98d7a05f9a677ba5ac1e6/dot.dhall
+let dot = https://raw.githubusercontent.com/AumyF/dotstingray-libs/fd1443d5087b1522675b2662bfbebf459627ac8a/prelude.dhall
 
-let copy = lib.useCmd "cp"
+let configs = https://raw.githubusercontent.com/AumyF/dotstingray-libs/fd1443d5087b1522675b2662bfbebf459627ac8a/presets-configs.dhall
 
-in    [ copy.starship "./starship.toml"
-      , copy.fish "./config.fish"
-      , copy.git "./.gitconfig"
-      ]
-    : List Text
+in
+
+{
+  commands = [
+    configs.symlink.starship "./starship/starship.toml",
+    configs.symlink.git "./git/config",
+    configs.symlink.neovim-init-lua "./neovim/init.lua",
+  ]
+}: dot.Recipe
