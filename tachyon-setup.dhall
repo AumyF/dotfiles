@@ -3,7 +3,7 @@ let dot = https://raw.githubusercontent.com/AumyF/dotstingray-libs/fd1443d5087b1
 let pm = https://raw.githubusercontent.com/AumyF/dotstingray-libs/fd1443d5087b1522675b2662bfbebf459627ac8a/presets-package-managers.dhall
 
 in    { commands =
-        [ brew
+        [ brew [
             , "skhd"
             , "yabai"
             , "firefox"
