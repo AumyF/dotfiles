@@ -4,6 +4,7 @@ path=(
     ~/.cabal/bin
     ~/.cargo/bin
     /usr/local/bin
+    ~/.npm/bin
     $path
 )
 
