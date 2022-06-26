@@ -10,9 +10,6 @@ require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
 
-  use 'lambdalisue/fern.vim'
-  use 'antoinemadec/FixCursorHold.nvim'
-
   use 'nvim-treesitter/nvim-treesitter'
 
   use 'projekt0n/github-nvim-theme'
@@ -114,9 +111,8 @@ vim.cmd('command! -nargs=* Terminal vsplit | wincmd j | vertical resize 80 | ter
 local opts = { noremap = true, silent = true }
 
 vim.api.nvim_set_keymap('n', '<Space>p', '<cmd>Telescope fd<CR>', opts)
-vim.keymap.set('n', '<Space>e', '<cmd>Fern . -drawer <CR>')
+vim.keymap.set('n', '<Space>f', '<cmd>Neotree reveal<CR>')
 vim.keymap.set('n', '<Space>t', '<cmd>Terminal<CR>')
-vim.keymap.set('n', '<Space>f', '<cmd>Format<CR>')
 
 -- Move focus
 vim.keymap.set('n', '<Space>j', '<C-w>w')
