@@ -102,7 +102,6 @@ cmp.setup({
 
 -- Ex Commands
 
-vim.cmd('command! Format :lua vim.lsp.buf.formatting()')
 vim.cmd('command! -nargs=* Terminal vsplit | wincmd j | vertical resize 80 | terminal <args>')
 
 
@@ -122,7 +121,9 @@ vim.keymap.set('n', '<Space>k', '<C-w>W')
 
 local lsp_set_keymap = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-
+  vim.keymap.set('n', '<Space>lca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<Space>lrn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<Space>lf', vim.lsp.buf.formatting, opts)
 end
 
 local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals'}
