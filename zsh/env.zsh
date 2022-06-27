@@ -8,5 +8,5 @@ path=(
     $path
 )
 
-EDITOR=nvim
+export EDITOR=nvim
 
