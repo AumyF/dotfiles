@@ -19,6 +19,9 @@ setopt hist_ignore_space
 setopt share_history
 SAVEHIST=10000
 
+# Load Nix (single-user installation)
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi
+
 type starship &> /dev/null && eval "$(starship init zsh)"
 type zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
@@ -37,3 +40,4 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait
 zinit light zdharma-continuum/fast-syntax-highlighting
+
