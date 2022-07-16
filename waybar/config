@@ -1,0 +1,25 @@
+{
+  "layer": "top",
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["cpu", "memory", "network", "battery", "clock"],
+  "sway/window": {
+    "max-length": 50
+  },
+  "cpu": {
+    "format": "CPU {usage}%"
+  },
+  "memory": {
+    "format": "RAM {percentage}%"
+  },
+  "network": {
+    "tooltip-format": "Interface: {ifname}\nSSID: {essid}\nStrength: {signalStrength}",
+  },
+  "battery": {
+    "format": "BAT {capacity}%"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%Y-%m-%d %H:%M:%S}"
+  }
+}
