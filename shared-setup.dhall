@@ -6,6 +6,7 @@ in {
   commands = [
     pm.nix-env-iA [
       , "nixpkgs.bat"
+      , "nixpkgs.direnv"
       , "nixpkgs.fd"
       , "nixpkgs.fzf"
       , "nixpkgs.gh"
@@ -19,6 +20,7 @@ in {
       , "nixpkgs.ripgrep"
       , "nixpkgs.starship"
       , "nixpkgs.tealdeer"
+      , "nixpkgs.zellij"
       , "nixpkgs.zoxide"
     ]
   ]
