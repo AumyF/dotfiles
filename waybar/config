@@ -2,7 +2,7 @@
   "layer": "top",
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["sway/window"],
-  "modules-right": ["cpu", "memory", "network", "battery", "clock"],
+  "modules-right": ["cpu", "memory", "network", "pulseaudio", "battery", "clock"],
   "sway/window": {
     "max-length": 50
   },
@@ -13,7 +13,11 @@
     "format": "RAM {percentage}%"
   },
   "network": {
-    "tooltip-format": "Interface: {ifname}\nSSID: {essid}\nStrength: {signalStrength}",
+    "format-disconnected": "NET: Disconnected",
+    "tooltip-format": "Interface: {ifname}\nSSID: {essid}\nStrength: {signalStrength}"
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}%"
   },
   "battery": {
     "format": "BAT {capacity}%"
@@ -21,5 +25,5 @@
   "clock": {
     "interval": 1,
     "format": "{:%Y-%m-%d %H:%M:%S}"
-  }
+  },
 }
