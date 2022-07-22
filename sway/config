@@ -24,7 +24,8 @@ set $menu wofi --show=run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/manhattan/images/patrick-tomasso-GXXYkSwndP4-unsplash.jpg fill
+
 #
 # Example configuration:
 #
@@ -71,7 +72,7 @@ output eDP-1 scale 1.3333
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -142,8 +143,8 @@ output eDP-1 scale 1.3333
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    # bindsym $mod+b splith
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -157,7 +158,7 @@ output eDP-1 scale 1.3333
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -206,11 +207,30 @@ bar {
   swaybar_command waybar
 }
 
+# Floating window
+for_window [app_id="Firefox — 共有インジケータ"] floating enable
+
+
 gaps inner 8
 gaps outer 2
-default_border pixel 4
+default_border pixel 2
 
+font Noto Sans 10
+
+set $bg #212121
+set $accent #f06292
+set $weak-accent #bbbbbbcc
+
+client.focused $weak-accent $weak-accent #000000 #cccccc
+client.unfocused $bg $bg #888888 #cccccc
+
+# Input method
 exec fcitx5
+
+# Clipboard manager
+exec wl-paste --watch cliphist store
+
+bindsym $mod+v exec cliphist list | wofi --show=dmenu | cliphist decode | wl-copy
 
 include /etc/sway/config.d/*
 
@@ -219,7 +239,6 @@ exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl
 # Setup Wob
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-
 
 # Volume control
 bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK
