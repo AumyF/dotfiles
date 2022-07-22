@@ -47,6 +47,8 @@ require('packer').startup(function(use)
         'MunifTanjim/nui.nvim',
       }
   }
+
+  use 'ionide/Ionide-vim'
 end)
 
 vim.cmd([[let g:neo_tree_remove_legacy_commands = 1]])
@@ -146,6 +148,20 @@ for _, lsp in pairs(formatting_disabled_servers) do
   }
 end
 
+-- F#
+vim.g['fsharp#fsautocomplete_command'] = {
+  'dotnet',
+  'fsautocomplete',
+  '--background-service-enabled'
+}
+
+vim.g['fsharp#lsp_auto_setup'] = 0
+
+require('ionide').setup {
+  on_attach = function(client, bufnr)
+    lsp_set_keymap(client, bufnr)
+  end,
+}
 
 -- lsp_signature
 require'lsp_signature'.setup {}
