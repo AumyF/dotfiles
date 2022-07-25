@@ -37,6 +37,7 @@ require('packer').startup(function(use)
   use 'machakann/vim-sandwich'
 
   use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-ts-autotag'
 
   use {
     'nvim-neo-tree/neo-tree.nvim',
@@ -177,6 +178,12 @@ nullls.setup {
 
 -- Tree-sitter
 require'nvim-treesitter.configs'.setup {
+  autotag = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  },
   highlight = {
     enable = true,
     disable = {},
