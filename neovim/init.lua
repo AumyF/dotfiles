@@ -35,6 +35,10 @@ require('packer').startup(function(use)
   }
 
   use 'machakann/vim-sandwich'
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2',
+  }
 
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
@@ -119,6 +123,12 @@ vim.keymap.set('n', '<Space>t', '<cmd>Terminal<CR>')
 -- Move focus
 vim.keymap.set('n', '<Space>j', '<C-w>w')
 vim.keymap.set('n', '<Space>k', '<C-w>W')
+
+-- Hop.nvim
+local hop = require('hop')
+hop.setup {}
+vim.keymap.set('n', '<Space>hw', '<cmd>HopWord<CR>')
+vim.keymap.set('n', '<Space>hc', '<cmd>HopChar1<CR>')
 
 -- Language servers
 
