@@ -159,6 +159,9 @@ for _, lsp in pairs(formatting_disabled_servers) do
   }
 end
 
+-- SATySFi
+vim.cmd("autocmd BufNewFile,BufRead *.saty set filetype=satysfi")
+
 -- F#
 vim.g['fsharp#fsautocomplete_command'] = {
   'dotnet',
@@ -187,6 +190,15 @@ nullls.setup {
 
 
 -- Tree-sitter
+local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
+parser_config.satysfi = {
+  install_info = {
+    url = "https://github.com/monaqa/tree-sitter-satysfi",
+    files = {"src/parser.c", "src/scanner.c"}
+  },
+  filetype = "satysfi"
+}
+
 require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
@@ -225,6 +237,7 @@ require'nvim-treesitter.configs'.setup {
     'ocaml_interface',
     'prisma',
     'rust',
+    'satysfi',
     'scheme',
     'toml',
     'typescript',
