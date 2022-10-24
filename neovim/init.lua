@@ -116,7 +116,11 @@ vim.cmd('command! -nargs=* Terminal vsplit | wincmd j | vertical resize 80 | ter
 
 local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap('n', '<Space>p', '<cmd>Telescope fd<CR>', opts)
+-- TeleScope
+vim.keymap.set('n', '<Space>tt', '<cmd>Telescope<CR>')
+vim.keymap.set('n', '<Space>tf', '<cmd>Telescope fd<CR>')
+vim.keymap.set('n', '<Space>tg', '<cmd>Telescope live_grep<CR>')
+
 vim.keymap.set('n', '<Space>f', '<cmd>Neotree reveal<CR>')
 vim.keymap.set('n', '<Space>t', '<cmd>Terminal<CR>')
 
