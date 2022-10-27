@@ -142,7 +142,7 @@ local lsp_set_keymap = function(client, bufnr)
   vim.keymap.set('n', '<Space>lf', vim.lsp.buf.formatting, opts)
 end
 
-local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server' }
+local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
@@ -222,6 +222,7 @@ require'nvim-treesitter.configs'.setup {
     },
   },
   ensure_installed = {
+    'astro',
     'bash',
     'c',
     'clojure',
