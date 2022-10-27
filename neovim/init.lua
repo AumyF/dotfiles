@@ -122,7 +122,6 @@ vim.keymap.set('n', '<Space>tf', '<cmd>Telescope fd<CR>')
 vim.keymap.set('n', '<Space>tg', '<cmd>Telescope live_grep<CR>')
 
 vim.keymap.set('n', '<Space>f', '<cmd>Neotree reveal<CR>')
-vim.keymap.set('n', '<Space>t', '<cmd>Terminal<CR>')
 
 -- Move focus
 vim.keymap.set('n', '<Space>j', '<C-w>w')
