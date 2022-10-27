@@ -143,7 +143,7 @@ local lsp_set_keymap = function(client, bufnr)
   vim.keymap.set('n', '<Space>lf', vim.lsp.buf.formatting, opts)
 end
 
-local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'rnix', 'dhall_lsp_server' }
+local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
