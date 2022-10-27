@@ -157,7 +157,7 @@ for _, lsp in pairs(formatting_disabled_servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
       lsp_set_keymap(client, bufnr)
-      client.resolved_capabilities.document_formatting = false
+      client.server_capabilities.document_formatting = false
     end,
   }
 end
