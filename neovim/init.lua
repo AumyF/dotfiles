@@ -146,7 +146,7 @@ local lsp_set_keymap = function(client, bufnr)
   vim.keymap.set('n', '<Space>lf', vim.lsp.buf.formatting, opts)
 end
 
-local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro' }
+local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro', 'elmls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
@@ -173,7 +173,6 @@ vim.cmd("autocmd BufNewFile,BufRead *.saty set filetype=satysfi")
 vim.g['fsharp#fsautocomplete_command'] = {
   'dotnet',
   'fsautocomplete',
-  '--background-service-enabled'
 }
 
 vim.g['fsharp#lsp_auto_setup'] = 0
