@@ -271,5 +271,15 @@ vim.wo.number = true
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 0
+
+-- Move cursor by display line
+
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
+vim.keymap.set('n', '<Down>', 'gj')
+vim.keymap.set('n', '<Up>', 'gk')
+vim.keymap.set('i', '<Down>', '<C-o>gj')
+vim.keymap.set('i', '<Up>', '<C-o>gk')
+
 -- Open terminal in insert mode
 vim.cmd('autocmd TermOpen * startinsert')
