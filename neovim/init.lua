@@ -290,5 +290,9 @@ vim.keymap.set('n', '<Up>', 'gk')
 vim.keymap.set('i', '<Down>', '<C-o>gj')
 vim.keymap.set('i', '<Up>', '<C-o>gk')
 
+-- Cursor line highlight
+vim.cmd('set cursorline')
+vim.cmd('set cursorcolumn')
+
 -- Open terminal in insert mode
 vim.cmd('autocmd TermOpen * startinsert')
