@@ -276,7 +276,7 @@ require'indent_blankline'.setup {
 
 -- General configurations
 
-vim.wo.number = true
+vim.wo.relativenumber = true
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 0
