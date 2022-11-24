@@ -68,7 +68,10 @@ vim.cmd([[
 
 
 -- Autopairs
-require'nvim-autopairs'.setup {}
+require'nvim-autopairs'.setup {
+  check_ts = true,
+  enable_check_bracket_line = false,
+}
 
 
 -- Neo-tree
