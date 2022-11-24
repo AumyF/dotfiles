@@ -136,7 +136,19 @@ vim.keymap.set('n', '<Space>k', '<C-w>W')
 -- Hop.nvim
 local hop = require('hop')
 hop.setup {}
-vim.keymap.set('n', '<Space>hw', '<cmd>HopWord<CR>')
+
+function hopword()
+  local jump_target = require'hop.jump_target'
+
+  local generator = jump_target.jump_targets_by_scanning_lines
+
+  hop.hint_with(
+    generator(jump_target.regex_by_searching([[\<\k\{-}\>]])),
+    hop.opts
+  )
+end
+
+vim.keymap.set('n', '<Space>hw', hopword)
 vim.keymap.set('n', '<Space>hc', '<cmd>HopChar1<CR>')
 
 -- Language servers
