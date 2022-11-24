@@ -55,6 +55,8 @@ require('packer').startup(function(use)
   }
 
   use 'ionide/Ionide-vim'
+ 
+  use 'lukas-reineke/indent-blankline.nvim'
 end)
 
 vim.cmd([[let g:neo_tree_remove_legacy_commands = 1]])
@@ -263,6 +265,13 @@ require'github-theme'.setup {
 
 require'transparent'.setup {
   enable = true
+}
+
+-- Indent guide
+
+require'indent_blankline'.setup {
+  show_current_context = true,
+  show_current_context_start = true,
 }
 
 -- General configurations
