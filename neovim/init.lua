@@ -13,6 +13,7 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   use 'projekt0n/github-nvim-theme'
+  use 'xiyaowong/nvim-transparent'
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -256,6 +257,10 @@ require'nvim-treesitter.configs'.setup {
 
 require'github-theme'.setup {
   theme_style = 'dark_default',
+}
+
+require'transparent'.setup {
+  enable = true
 }
 
 -- General configurations
