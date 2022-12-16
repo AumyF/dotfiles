@@ -212,6 +212,22 @@ for _, lsp in pairs(formatting_disabled_servers) do
   }
 end
 
+
+-- Lua
+require 'lspconfig'.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT"
+      },
+      diagnostics = { globals = { 'vim' } }
+    },
+    workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+    telemetry = { enable = false }
+  }
+}
+
+
 -- SATySFi
 vim.cmd("autocmd BufNewFile,BufRead *.saty set filetype=satysfi")
 
