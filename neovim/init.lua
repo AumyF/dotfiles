@@ -54,6 +54,8 @@ require('packer').startup(function(use)
       }
   }
 
+  use 'akinsho/toggleterm.nvim'
+
   use 'ionide/Ionide-vim'
  
   use 'lukas-reineke/indent-blankline.nvim'
@@ -84,6 +86,19 @@ require'neo-tree'.setup({
     },
   },
 })
+
+
+-- Toggleterm
+require'toggleterm'.setup()
+local Terminal = require'toggleterm.terminal'.Terminal
+local lazygit = Terminal:new({
+  cmd = 'lazygit',
+  direction = 'float',
+  hidden = true
+})
+
+vim.keymap.set('n', '<Space>g', function() lazygit:toggle() end)
+
 
 
 -- Completions
