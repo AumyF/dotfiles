@@ -64,6 +64,15 @@ require('packer').startup(function(use)
     end
   }
 
+  use {
+    'akinsho/bufferline.nvim',
+    tag = 'v3.*',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require'bufferline'.setup {}
+    end
+  }
+
   use 'ionide/Ionide-vim'
  
   use 'lukas-reineke/indent-blankline.nvim'
