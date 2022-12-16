@@ -17,12 +17,12 @@ require('packer').startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/plenary.nvim'}}
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = {{'nvim-lua/plenary.nvim'}}
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   use 'ray-x/lsp_signature.nvim'
@@ -31,7 +31,7 @@ require('packer').startup(function(use)
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require'trouble'.setup {}
+      require 'trouble'.setup {}
     end
   }
 
@@ -46,12 +46,12 @@ require('packer').startup(function(use)
 
   use {
     'nvim-neo-tree/neo-tree.nvim',
-      branch = 'v2.x',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'kyazdani42/nvim-web-devicons',
-        'MunifTanjim/nui.nvim',
-      }
+    branch = 'v2.x',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    }
   }
 
   use 'akinsho/toggleterm.nvim'
@@ -60,7 +60,7 @@ require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
-      require'lualine'.setup()
+      require 'lualine'.setup()
     end
   }
 
@@ -69,12 +69,12 @@ require('packer').startup(function(use)
     tag = 'v3.*',
     requires = 'nvim-tree/nvim-web-devicons',
     config = function()
-      require'bufferline'.setup {}
+      require 'bufferline'.setup {}
     end
   }
 
   use 'ionide/Ionide-vim'
- 
+
   use 'lukas-reineke/indent-blankline.nvim'
 end)
 
@@ -89,14 +89,14 @@ vim.cmd([[
 
 
 -- Autopairs
-require'nvim-autopairs'.setup {
+require 'nvim-autopairs'.setup {
   check_ts = true,
   enable_check_bracket_line = false,
 }
 
 
 -- Neo-tree
-require'neo-tree'.setup({
+require 'neo-tree'.setup({
   filesystem = {
     filtered_items = {
       hide_dotfiles = false,
@@ -106,8 +106,8 @@ require'neo-tree'.setup({
 
 
 -- Toggleterm
-require'toggleterm'.setup()
-local Terminal = require'toggleterm.terminal'.Terminal
+require 'toggleterm'.setup()
+local Terminal = require 'toggleterm.terminal'.Terminal
 local lazygit = Terminal:new({
   cmd = 'lazygit',
   direction = 'float',
@@ -120,8 +120,8 @@ vim.keymap.set('n', '<Space>g', function() lazygit:toggle() end)
 
 -- Completions
 
-local cmp_autopairs = require'nvim-autopairs.completion.cmp'
-local cmp = require'cmp'
+local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+local cmp = require 'cmp'
 
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 
@@ -170,7 +170,7 @@ local hop = require('hop')
 hop.setup {}
 
 function hopword()
-  local jump_target = require'hop.jump_target'
+  local jump_target = require 'hop.jump_target'
 
   local generator = jump_target.jump_targets_by_scanning_lines
 
@@ -192,7 +192,8 @@ local lsp_set_keymap = function(client, bufnr)
   vim.keymap.set('n', '<Space>lf', vim.lsp.buf.formatting, opts)
 end
 
-local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro', 'elmls' }
+local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro',
+  'elmls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
@@ -246,10 +247,10 @@ require('ionide').setup {
 }
 
 -- lsp_signature
-require'lsp_signature'.setup {}
+require 'lsp_signature'.setup {}
 
 -- null-ls
-local nullls = require'null-ls'
+local nullls = require 'null-ls'
 nullls.setup {
   sources = {
     nullls.builtins.formatting.prettier,
@@ -258,16 +259,16 @@ nullls.setup {
 
 
 -- Tree-sitter
-local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
+local parser_config = require 'nvim-treesitter.parsers'.get_parser_configs()
 parser_config.satysfi = {
   install_info = {
     url = "https://github.com/monaqa/tree-sitter-satysfi",
-    files = {"src/parser.c", "src/scanner.c"}
+    files = { "src/parser.c", "src/scanner.c" }
   },
   filetype = "satysfi"
 }
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
   },
@@ -319,17 +320,17 @@ require'nvim-treesitter.configs'.setup {
 
 -- Color theme
 
-require'github-theme'.setup {
+require 'github-theme'.setup {
   theme_style = 'dark_default',
 }
 
-require'transparent'.setup {
+require 'transparent'.setup {
   enable = true
 }
 
 -- Indent guide
 
-require'indent_blankline'.setup {
+require 'indent_blankline'.setup {
   show_current_context = true,
   show_current_context_start = true,
 }
@@ -354,6 +355,8 @@ vim.keymap.set('i', '<Up>', '<C-o>gk')
 -- Cursor line highlight
 vim.cmd('set cursorline')
 vim.cmd('set cursorcolumn')
+vim.cmd('highlight CursorColumn guibg=#163356')
+vim.cmd('highlight CursorLine guibg=#163356')
 
 -- Open terminal in insert mode
 vim.cmd('autocmd TermOpen * startinsert')
