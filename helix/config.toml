@@ -1,0 +1,15 @@
+theme = "github_dark"
+
+[editor]
+line-number = "relative"
+cursorline = true
+cursorcolumn = true
+bufferline = "always"
+true-color = true
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.indent-guides]
+render = true
