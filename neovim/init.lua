@@ -74,6 +74,7 @@ require('packer').startup(function(use)
   }
 
   use 'ionide/Ionide-vim'
+  use 'purescript-contrib/purescript-vim'
 
   use 'lukas-reineke/indent-blankline.nvim'
 end)
@@ -193,7 +194,7 @@ local lsp_set_keymap = function(client, bufnr)
 end
 
 local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro',
-  'elmls' }
+  'elmls', 'hls', 'purescriptls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
