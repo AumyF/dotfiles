@@ -33,6 +33,7 @@ output * bg /home/manhattan/images/nanmokaken.jpg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output eDP-1 scale 1.3333
+output HDMI-A-1 scale 1.5 position -1920,0
 
 ### Idle configuration
 #
