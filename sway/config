@@ -24,7 +24,7 @@ set $menu wofi --show=run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/manhattan/images/patrick-tomasso-GXXYkSwndP4-unsplash.jpg fill
+output * bg /home/manhattan/images/nanmokaken.jpg fill
 
 #
 # Example configuration:
