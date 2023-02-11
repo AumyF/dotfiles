@@ -204,7 +204,7 @@ for _, lsp in pairs(servers) do
 end
 
 -- In some languages we prefer to use external formatters (i.e. Prettier) rather than ones servers provide
-local formatting_disabled_servers = { 'jsonls', 'html', 'cssls', 'volar', 'graphql', 'tsserver' }
+local formatting_disabled_servers = { 'jsonls', 'html', 'cssls', 'tsserver' }
 for _, lsp in pairs(formatting_disabled_servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
@@ -214,6 +214,9 @@ for _, lsp in pairs(formatting_disabled_servers) do
   }
 end
 
+require('lspconfig').graphql.setup {
+  filetypes = { "graphql", "typescript", "typescriptreact", "vue" }
+}
 
 -- Lua
 require 'lspconfig'.sumneko_lua.setup {
