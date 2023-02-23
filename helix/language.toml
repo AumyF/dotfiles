@@ -1,0 +1,21 @@
+[[language]]
+name = "satysfi"
+scope = "source.satysfi"
+file-types = ["saty"]
+auto-format = true
+language-server = { command = "satysfi-language-server", args = [] }
+
+[[grammar]]
+name = "satysfi"
+source = { git = "https://github.com/monaqa/tree-sitter-satysfi" }
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "^(ts|typescript)$"
+file-types = ["ts"]
+shebangs = ["deno", "node"]
+roots = ["deno.json", "package.json", "tsconfig.json"]
+config = { enable = true, lint = true, unstable = true }
+language-server = { command = "deno", args = ["lsp"], language-id = "typescript" }
+indent = { tab-width = 2, unit = "  " }

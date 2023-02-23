@@ -1,0 +1,5 @@
+{
+	"imports": {
+		"dotstingray/": "https://deno.land/x/dotstingray@v0.2.1/"
+	}
+}
