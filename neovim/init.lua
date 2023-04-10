@@ -13,7 +13,6 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   use 'projekt0n/github-nvim-theme'
-  use 'xiyaowong/nvim-transparent'
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -26,6 +25,8 @@ require('packer').startup(function(use)
   }
 
   use 'ray-x/lsp_signature.nvim'
+
+  use 'stevearc/dressing.nvim'
 
   use {
     "folke/trouble.nvim",
@@ -194,7 +195,7 @@ local lsp_set_keymap = function(client, bufnr)
 end
 
 local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro',
-  'elmls', 'hls', 'purescriptls' }
+  'elmls', 'hls', 'purescriptls', 'volar' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = function(client, bufnr)
@@ -219,7 +220,7 @@ require('lspconfig').graphql.setup {
 }
 
 -- Lua
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
@@ -332,9 +333,6 @@ require 'github-theme'.setup {
   theme_style = 'dark_default',
 }
 
-require 'transparent'.setup {
-  enable = true
-}
 
 -- Indent guide
 
