@@ -1,93 +1,153 @@
+-- lazy.nvim bootstrap
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+
 -- Packages
+require('lazy').setup({
+  -- LSP
+  'neovim/nvim-lspconfig',
 
-require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'neovim/nvim-lspconfig'
+  -- Completions
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
 
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
+  -- Tree-sitter
+  { 'nvim-treesitter/nvim-treesitter', config = function()
+    require 'nvim-treesitter.configs'.setup {
+      autotag = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      },
+      highlight = {
+        enable = true,
+        disable = {},
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          node_decremental = "grm",
+        },
+      },
+      ensure_installed = {
+        'astro',
+        'bash',
+        'c',
+        'clojure',
+        'cpp',
+        'css',
+        'dockerfile',
+        'go',
+        'html',
+        'javascript',
+        'json',
+        'jsonc',
+        'lua',
+        'make',
+        'nix',
+        'ocaml',
+        'ocaml_interface',
+        'prisma',
+        'rust',
+        'scheme',
+        'toml',
+        'typescript',
+        'tsx',
+        'vue',
+        'yaml',
+      },
+    }
+  end },
 
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+  -- Theme
+  'projekt0n/github-nvim-theme',
 
-  use 'nvim-treesitter/nvim-treesitter'
+  -- Fuzzy-finder
+  { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
-  use 'projekt0n/github-nvim-theme'
-
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
-
-  use {
+  {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    dependencies = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  use 'ray-x/lsp_signature.nvim'
+  , 'ray-x/lsp_signature.nvim'
 
-  use 'stevearc/dressing.nvim'
+  , 'stevearc/dressing.nvim'
 
-  use {
+  , {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require 'trouble'.setup {}
     end
   }
 
-  use 'machakann/vim-sandwich'
-  use {
+  , 'machakann/vim-sandwich'
+  , {
     'phaazon/hop.nvim',
     branch = 'v2',
   }
 
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
+  , 'windwp/nvim-autopairs'
+  , 'windwp/nvim-ts-autotag'
 
-  use {
+  , {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
     }
   }
 
-  use 'akinsho/toggleterm.nvim'
+  , 'akinsho/toggleterm.nvim'
 
-  use {
+  , {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
-      require 'lualine'.setup()
+      require 'lualine'.setup({
+        options = {
+          theme = "auto"
+        }
+      })
     end
   }
 
-  use {
+  , {
     'akinsho/bufferline.nvim',
     tag = 'v3.*',
-    requires = 'nvim-tree/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require 'bufferline'.setup {}
     end
   }
 
-  use 'ionide/Ionide-vim'
-  use 'purescript-contrib/purescript-vim'
+  , 'ionide/Ionide-vim'
+  , 'purescript-contrib/purescript-vim'
 
-  use 'lukas-reineke/indent-blankline.nvim'
-end)
+  , 'lukas-reineke/indent-blankline.nvim'
+})
+
 
 vim.cmd([[let g:neo_tree_remove_legacy_commands = 1]])
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost init.lua source <afile> | PackerCompile
-  augroup end
-]])
 
 
 -- Autopairs
@@ -275,55 +335,6 @@ parser_config.satysfi = {
     files = { "src/parser.c", "src/scanner.c" }
   },
   filetype = "satysfi"
-}
-
-require 'nvim-treesitter.configs'.setup {
-  autotag = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-  highlight = {
-    enable = true,
-    disable = {},
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      node_decremental = "grm",
-    },
-  },
-  ensure_installed = {
-    'astro',
-    'bash',
-    'c',
-    'clojure',
-    'cpp',
-    'css',
-    'dockerfile',
-    'go',
-    'html',
-    'javascript',
-    'json',
-    'jsonc',
-    'lua',
-    'make',
-    'nix',
-    'ocaml',
-    'ocaml_interface',
-    'prisma',
-    'rust',
-    'satysfi',
-    'scheme',
-    'toml',
-    'typescript',
-    'tsx',
-    'vue',
-    'yaml',
-  },
 }
 
 
