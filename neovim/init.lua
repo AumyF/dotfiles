@@ -78,8 +78,21 @@ require('lazy').setup({
   -- Theme
   'projekt0n/github-nvim-theme',
 
-  -- Fuzzy-finder
-  { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+  -- Telescope
+  { 'nvim-telescope/telescope.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'debugloop/telescope-undo.nvim'
+    },
+    config = function()
+      require('telescope').setup({
+        extensions = {
+          undo = {}
+        }
+      })
+      require('telescope').load_extension('undo')
+    end
+  },
 
   {
     'jose-elias-alvarez/null-ls.nvim',
@@ -220,6 +233,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<Space>tt', '<cmd>Telescope<CR>')
 vim.keymap.set('n', '<Space>tf', '<cmd>Telescope fd<CR>')
 vim.keymap.set('n', '<Space>tg', '<cmd>Telescope live_grep<CR>')
+vim.keymap.set('n', '<Space>u', '<cmd>Telescope undo<CR>')
 
 vim.keymap.set('n', '<Space>f', '<cmd>Neotree reveal<CR>')
 
