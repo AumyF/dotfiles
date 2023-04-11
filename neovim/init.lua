@@ -78,6 +78,15 @@ require('lazy').setup({
   -- Theme
   'projekt0n/github-nvim-theme',
 
+  {
+    'folke/which-key.nvim',
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require('which-key').setup({})
+    end
+  },
+
   -- Telescope
   { 'nvim-telescope/telescope.nvim',
     dependencies = {
