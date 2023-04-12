@@ -96,12 +96,25 @@ require('lazy').setup({
     config = function()
       require('telescope').setup({
         extensions = {
-          undo = {}
+          undo = {},
+          fzf = {}
         }
       })
       require('telescope').load_extension('undo')
+      require('telescope').load_extension('file_browser')
+      require('telescope').load_extension('fzf')
     end
   },
+
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<Space>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>"}
+    }
+  },
+
+  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
   {
     'jose-elias-alvarez/null-ls.nvim',
