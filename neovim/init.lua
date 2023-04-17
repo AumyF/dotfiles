@@ -412,6 +412,7 @@ vim.wo.relativenumber = true
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 0
+vim.o.undofile = true
 
 -- Move cursor by display line
 
