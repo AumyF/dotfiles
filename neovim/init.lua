@@ -350,6 +350,33 @@ require 'lspconfig'.lua_ls.setup {
 
 }
 
+-- Parol
+vim.filetype.add({
+  extension = {
+    par = 'parol',
+  },
+  filename = {
+  },
+})
+
+local configs = require 'lspconfig.configs'
+
+if not configs.parol_ls then
+  configs.parol_ls = {
+    default_config = {
+      cmd = {'parol-ls', '--stdio'},
+      filetypes = {'parol'},
+      root_dir = require'lspconfig.util'.root_pattern 'Cargo.toml',
+      settings = {},
+    }
+  }
+end
+
+require'lspconfig'.parol_ls.setup {
+  on_attach = function(client, bufnr)
+    lsp_set_keymap(client, bufnr)
+  end
+}
 
 -- SATySFi
 vim.cmd("autocmd BufNewFile,BufRead *.saty set filetype=satysfi")
