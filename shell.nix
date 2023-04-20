@@ -1,3 +1,3 @@
 { pkgs ? import <nixpkgs> { } }: pkgs.mkShell {
-  buildInputs = with pkgs; [ deno ];
+  buildInputs = with pkgs; [ deno stylua ];
 }
