@@ -460,6 +460,7 @@ require 'indent_blankline'.setup {
 
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.wo.scrolloff = 5
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 0
