@@ -87,6 +87,28 @@ require('lazy').setup({
     end
   },
 
+  {'petertriho/nvim-scrollbar', config = function()
+    local colors = require("github-theme.palette").setup()
+
+    require'scrollbar'.setup {
+      marks = {
+        Cursor = {color = colors.cursor},
+        Search = {color =colors.orange},
+        GitAdd = {color = colors.git.add},
+        GitChange = {color=colors.git.change},
+        GitDelete = {color=colors.git.delete},
+      }
+    }
+
+  end},
+  {
+    "kevinhwang91/nvim-hlslens",
+    config = function()
+      require("scrollbar.handlers.search").setup({
+      })
+    end,
+  },
+
   -- Telescope
   { 'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -162,6 +184,8 @@ require('lazy').setup({
           delay = 300,
         }
       })
+
+      require("scrollbar.handlers.gitsigns").setup()
     end
   }
 
