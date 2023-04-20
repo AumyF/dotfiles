@@ -79,7 +79,13 @@ require('lazy').setup({
   },
 
   -- Theme
-  'projekt0n/github-nvim-theme',
+  {
+    'projekt0n/github-nvim-theme',
+    config = function()
+      require 'github-theme'.setup {}
+      vim.cmd('colorscheme github_dark_default')
+    end
+  },
 
   {
     'folke/which-key.nvim',
@@ -446,14 +452,6 @@ parser_config.satysfi = {
   },
   filetype = "satysfi"
 }
-
-
--- Color theme
-
-require 'github-theme'.setup {
-  theme_style = 'dark_default',
-}
-
 
 -- Indent guide
 
