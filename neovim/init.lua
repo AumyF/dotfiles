@@ -20,6 +20,7 @@ require("lazy").setup({
 	-- Completions
 	{
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter, CmdlineEnter",
 		config = function()
 			local cmp = require("cmp")
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -47,10 +48,10 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"hrsh7th/cmp-nvim-lsp",
-	"L3MON4D3/LuaSnip",
-	"saadparwaiz1/cmp_luasnip",
-	"hrsh7th/cmp-emoji",
+	{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
+	{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
+	{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
+	{ "hrsh7th/cmp-emoji", event = "InsertEnter" },
 
 	-- Tree-sitter
 	{
@@ -126,6 +127,7 @@ require("lazy").setup({
 
 	{
 		"petertriho/nvim-scrollbar",
+		event = "BufRead, BufNewFile",
 		config = function()
 			local colors = require("github-theme.palette").setup()
 
@@ -142,6 +144,7 @@ require("lazy").setup({
 	},
 	{
 		"kevinhwang91/nvim-hlslens",
+    event = "BufNewFile, BufRead",
 		config = function()
 			require("scrollbar.handlers.search").setup({})
 		end,
@@ -154,6 +157,7 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 			"debugloop/telescope-undo.nvim",
 		},
+		cmd = "Telescope",
 		config = function()
 			require("telescope").setup({
 				extensions = {
@@ -186,6 +190,7 @@ require("lazy").setup({
 	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
+		cmd = "Trouble",
 		config = function()
 			require("trouble").setup({})
 		end,
@@ -195,8 +200,8 @@ require("lazy").setup({
 		"phaazon/hop.nvim",
 		branch = "v2",
 	},
-	"windwp/nvim-autopairs",
-	"windwp/nvim-ts-autotag",
+	{ "windwp/nvim-autopairs", event = "InsertEnter" },
+	{ "windwp/nvim-ts-autotag", event = "InsertEnter" },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -210,6 +215,7 @@ require("lazy").setup({
 	{
 		"lewis6991/gitsigns.nvim",
 		tag = "v0.6",
+		event = { "BufNewFile", "BufRead" },
 		config = function()
 			require("gitsigns").setup({
 				current_line_blame = true,
@@ -236,6 +242,7 @@ require("lazy").setup({
 
 	{
 		"RRethy/vim-illuminate",
+    event = "BufRead, BufNewFile",
 	},
 	{
 		"akinsho/bufferline.nvim",
@@ -245,8 +252,14 @@ require("lazy").setup({
 			require("bufferline").setup({})
 		end,
 	},
-	"ionide/Ionide-vim",
-	"purescript-contrib/purescript-vim",
+	{
+		"ionide/Ionide-vim",
+		ft = "fsharp",
+	},
+	{
+		"purescript-contrib/purescript-vim",
+		ft = "purescript",
+	},
 	"lukas-reineke/indent-blankline.nvim",
 })
 
