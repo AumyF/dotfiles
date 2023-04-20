@@ -25,55 +25,58 @@ require('lazy').setup({
   'saadparwaiz1/cmp_luasnip',
 
   -- Tree-sitter
-  { 'nvim-treesitter/nvim-treesitter', config = function()
-    require 'nvim-treesitter.configs'.setup {
-      autotag = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
-      highlight = {
-        enable = true,
-        disable = {},
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "gnn",
-          node_incremental = "grn",
-          node_decremental = "grm",
+  {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        autotag = {
+          enable = true,
         },
-      },
-      ensure_installed = {
-        'astro',
-        'bash',
-        'c',
-        'clojure',
-        'cpp',
-        'css',
-        'dockerfile',
-        'go',
-        'html',
-        'javascript',
-        'json',
-        'jsonc',
-        'lua',
-        'make',
-        'nix',
-        'ocaml',
-        'ocaml_interface',
-        'prisma',
-        'rust',
-        'scheme',
-        'toml',
-        'typescript',
-        'tsx',
-        'vue',
-        'yaml',
-      },
-    }
-  end },
+        indent = {
+          enable = true,
+        },
+        highlight = {
+          enable = true,
+          disable = {},
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "gnn",
+            node_incremental = "grn",
+            node_decremental = "grm",
+          },
+        },
+        ensure_installed = {
+          'astro',
+          'bash',
+          'c',
+          'clojure',
+          'cpp',
+          'css',
+          'dockerfile',
+          'go',
+          'html',
+          'javascript',
+          'json',
+          'jsonc',
+          'lua',
+          'make',
+          'nix',
+          'ocaml',
+          'ocaml_interface',
+          'prisma',
+          'rust',
+          'scheme',
+          'toml',
+          'typescript',
+          'tsx',
+          'vue',
+          'yaml',
+        },
+      }
+    end
+  },
 
   -- Theme
   'projekt0n/github-nvim-theme',
@@ -87,20 +90,22 @@ require('lazy').setup({
     end
   },
 
-  {'petertriho/nvim-scrollbar', config = function()
-    local colors = require("github-theme.palette").setup()
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      local colors = require("github-theme.palette").setup()
 
-    require'scrollbar'.setup {
-      marks = {
-        Cursor = {color = colors.cursor},
-        Search = {color =colors.orange},
-        GitAdd = {color = colors.git.add},
-        GitChange = {color=colors.git.change},
-        GitDelete = {color=colors.git.delete},
+      require 'scrollbar'.setup {
+        marks = {
+          Cursor = { color = colors.cursor },
+          Search = { color = colors.orange },
+          GitAdd = { color = colors.git.add },
+          GitChange = { color = colors.git.change },
+          GitDelete = { color = colors.git.delete },
+        }
       }
-    }
-
-  end},
+    end
+  },
   {
     "kevinhwang91/nvim-hlslens",
     config = function()
@@ -110,7 +115,8 @@ require('lazy').setup({
   },
 
   -- Telescope
-  { 'nvim-telescope/telescope.nvim',
+  {
+    'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'debugloop/telescope-undo.nvim'
@@ -132,11 +138,11 @@ require('lazy').setup({
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     keys = {
-      { "<Space>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>"}
+      { "<Space>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>" }
     }
   },
 
-  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
   {
     'jose-elias-alvarez/null-ls.nvim',
@@ -145,34 +151,34 @@ require('lazy').setup({
 
   , 'ray-x/lsp_signature.nvim'
 
-  , 'stevearc/dressing.nvim'
+, 'stevearc/dressing.nvim'
 
-  , {
-    "folke/trouble.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require 'trouble'.setup {}
-    end
+, {
+  "folke/trouble.nvim",
+  dependencies = "nvim-tree/nvim-web-devicons",
+  config = function()
+    require 'trouble'.setup {}
+  end
+}
+
+, 'machakann/vim-sandwich'
+, {
+  'phaazon/hop.nvim',
+  branch = 'v2',
+}
+
+, 'windwp/nvim-autopairs'
+, 'windwp/nvim-ts-autotag'
+
+, {
+  'nvim-neo-tree/neo-tree.nvim',
+  branch = 'v2.x',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-web-devicons',
+    'MunifTanjim/nui.nvim',
   }
-
-  , 'machakann/vim-sandwich'
-  , {
-    'phaazon/hop.nvim',
-    branch = 'v2',
-  }
-
-  , 'windwp/nvim-autopairs'
-  , 'windwp/nvim-ts-autotag'
-
-  , {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    }
-  },
+},
 
   {
     'lewis6991/gitsigns.nvim',
@@ -191,35 +197,35 @@ require('lazy').setup({
 
   , 'akinsho/toggleterm.nvim'
 
-  , {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-    config = function()
-      require 'lualine'.setup({
-        options = {
-          theme = "auto"
-        }
-      })
-    end
-  },
+, {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+  config = function()
+    require 'lualine'.setup({
+      options = {
+        theme = "auto"
+      }
+    })
+  end
+},
 
   {
     'RRethy/vim-illuminate'
   }
 
   , {
-    'akinsho/bufferline.nvim',
-    tag = 'v3.*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require 'bufferline'.setup {}
-    end
-  }
+  'akinsho/bufferline.nvim',
+  tag = 'v3.*',
+  dependencies = 'nvim-tree/nvim-web-devicons',
+  config = function()
+    require 'bufferline'.setup {}
+  end
+}
 
-  , 'ionide/Ionide-vim'
-  , 'purescript-contrib/purescript-vim'
+, 'ionide/Ionide-vim'
+, 'purescript-contrib/purescript-vim'
 
-  , 'lukas-reineke/indent-blankline.nvim'
+, 'lukas-reineke/indent-blankline.nvim'
 })
 
 
@@ -328,7 +334,7 @@ local lsp_set_keymap = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.keymap.set('n', '<Space>lca', vim.lsp.buf.code_action, opts)
   vim.keymap.set('n', '<Space>lrn', vim.lsp.buf.rename, opts)
-  vim.keymap.set('n', '<Space>lf', vim.lsp.buf.formatting, opts)
+  vim.keymap.set('n', '<Space>lf', vim.lsp.buf.format, opts)
 end
 
 local servers = { 'rust_analyzer', 'ocamllsp', 'eslint', 'prismals', 'pyright', 'rnix', 'dhall_lsp_server', 'astro',
@@ -388,15 +394,15 @@ local configs = require 'lspconfig.configs'
 if not configs.parol_ls then
   configs.parol_ls = {
     default_config = {
-      cmd = {'parol-ls', '--stdio'},
-      filetypes = {'parol'},
-      root_dir = require'lspconfig.util'.root_pattern 'Cargo.toml',
+      cmd = { 'parol-ls', '--stdio' },
+      filetypes = { 'parol' },
+      root_dir = require 'lspconfig.util'.root_pattern 'Cargo.toml',
       settings = {},
     }
   }
 end
 
-require'lspconfig'.parol_ls.setup {
+require 'lspconfig'.parol_ls.setup {
   on_attach = function(client, bufnr)
     lsp_set_keymap(client, bufnr)
   end
