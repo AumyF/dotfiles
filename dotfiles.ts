@@ -31,6 +31,10 @@ const deploy = defineTask([
     source: "./direnv/rc.sh",
     destination: `${home}/.config/direnv/direnvrc`,
   }),
+  link({
+    source: "./wezterm/wezterm.lua",
+    destination: `${home}/.config/wezterm/wezterm.lua`,
+  }),
 ]);
 
 const nixProfileInstall = (
