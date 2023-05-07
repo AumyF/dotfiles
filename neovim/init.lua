@@ -137,17 +137,7 @@ require("lazy").setup({
 		"petertriho/nvim-scrollbar",
 		event = "BufRead, BufNewFile",
 		config = function()
-			local colors = require("github-theme.palette").setup()
-
-			require("scrollbar").setup({
-				marks = {
-					Cursor = { color = colors.cursor },
-					Search = { color = colors.orange },
-					GitAdd = { color = colors.git.add },
-					GitChange = { color = colors.git.change },
-					GitDelete = { color = colors.git.delete },
-				},
-			})
+			require("scrollbar").setup()
 		end,
 	},
 	{
