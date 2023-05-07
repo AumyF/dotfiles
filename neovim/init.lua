@@ -342,7 +342,6 @@ end
 local servers = {
 	"rust_analyzer",
 	"ocamllsp",
-	"eslint",
 	"prismals",
 	"pyright",
 	"rnix",
@@ -352,6 +351,7 @@ local servers = {
 	"hls",
 	"purescriptls",
 	"volar",
+	"unocss",
 }
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
@@ -372,8 +372,30 @@ for _, lsp in pairs(formatting_disabled_servers) do
 	})
 end
 
+require("lspconfig").eslint.setup({
+	on_attach = function(client, bufnr)
+		lsp_set_keymap(client, bufnr)
+	end,
+	settings = {
+		experimental = { useFlatConfig = true },
+	},
+})
+
 require("lspconfig").graphql.setup({
 	filetypes = { "graphql", "typescript", "typescriptreact", "vue" },
+})
+
+require("lspconfig").metals.setup({
+	on_attach = function(client, bufnr)
+		lsp_set_keymap(client, bufnr)
+	end,
+	root_dir = require("lspconfig.util").root_pattern(
+		".scala-build",
+		"build.sbt",
+		"build.sc",
+		"build.gradle",
+		"pom.xml"
+	),
 })
 
 -- Lua
