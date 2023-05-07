@@ -142,7 +142,7 @@ require("lazy").setup({
 	},
 	{
 		"kevinhwang91/nvim-hlslens",
-    event = "BufNewFile, BufRead",
+		event = "BufNewFile, BufRead",
 		config = function()
 			require("scrollbar.handlers.search").setup({})
 		end,
@@ -240,7 +240,7 @@ require("lazy").setup({
 
 	{
 		"RRethy/vim-illuminate",
-    event = "BufRead, BufNewFile",
+		event = "BufRead, BufNewFile",
 	},
 	{
 		"akinsho/bufferline.nvim",
