@@ -292,16 +292,6 @@ require("neo-tree").setup({
 
 -- Toggleterm
 require("toggleterm").setup()
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({
-	cmd = "lazygit",
-	direction = "float",
-	hidden = true,
-})
-
-vim.keymap.set("n", "<Space>g", function()
-	lazygit:toggle()
-end)
 
 -- Completions
 
