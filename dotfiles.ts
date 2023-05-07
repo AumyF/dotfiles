@@ -40,13 +40,13 @@ const deploy = defineTask([
 const nixProfileInstall = (
   /** @example "nixpkgs#deno" */ pkg: string,
 ) =>
-async () => {
-  const process = Deno.run({
-    cmd: ["nix", "profile", "install", pkg],
-  });
+  async () => {
+    const process = Deno.run({
+      cmd: ["nix", "profile", "install", pkg],
+    });
 
-  await process.status();
-};
+    await process.status();
+  };
 
 /** Useful for creating `stat` to check whether a command installed successfully */
 const processSuceeds =
