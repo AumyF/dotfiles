@@ -252,6 +252,8 @@ require("lazy").setup({
 			require("bufferline").setup({})
 		end,
 	},
+
+	-- Language specific
 	{
 		"ionide/Ionide-vim",
 		ft = "fsharp",
@@ -260,6 +262,10 @@ require("lazy").setup({
 		"purescript-contrib/purescript-vim",
 		ft = "purescript",
 	},
+	{
+		"Julian/lean.nvim",
+	},
+
 	"lukas-reineke/indent-blankline.nvim",
 })
 
@@ -435,6 +441,14 @@ require("ionide").setup({
 	on_attach = function(client, bufnr)
 		lsp_set_keymap(client, bufnr)
 	end,
+})
+
+require("lean").setup({
+	lsp = {
+		on_attach = function(client, bufnr)
+			lsp_set_keymap(client, bufnr)
+		end,
+	},
 })
 
 -- lsp_signature
