@@ -215,12 +215,18 @@ require("lazy").setup({
 		tag = "v0.6",
 		event = { "BufNewFile", "BufRead" },
 		config = function()
-			require("gitsigns").setup({
+			local gitsigns = require("gitsigns")
+			gitsigns.setup({
 				current_line_blame = true,
 				current_line_blame_opts = {
 					delay = 300,
 				},
 			})
+
+			vim.keymap.set("n", "<Space>gs", gitsigns.stage_hunk)
+			vim.keymap.set("n", "<Space>gj", gitsigns.next_hunk)
+			vim.keymap.set("n", "<Space>gk", gitsigns.prev_hunk)
+			vim.keymap.set("n", "<Space>gd", gitsigns.diffthis)
 
 			require("scrollbar.handlers.gitsigns").setup()
 		end,
