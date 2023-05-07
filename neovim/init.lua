@@ -110,9 +110,17 @@ require("lazy").setup({
 	-- Theme
 	{
 		"projekt0n/github-nvim-theme",
+	},
+	{
+		"rebelot/kanagawa.nvim",
 		config = function()
-			require("github-theme").setup({})
-			vim.cmd("colorscheme github_dark_default")
+			-- vim.cmd("colorscheme kanagawa-dragon")
+		end,
+	},
+	{
+		"sainnhe/sonokai",
+		config = function()
+			vim.cmd("colorscheme sonokai")
 		end,
 	},
 
