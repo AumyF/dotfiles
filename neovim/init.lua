@@ -250,7 +250,7 @@ require("lazy").setup({
 	},
 	{
 		"akinsho/bufferline.nvim",
-		tag = "v3.*",
+		tag = "v4.1.0",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
 			require("bufferline").setup({})
@@ -353,6 +353,7 @@ local servers = {
 	"volar",
 	"unocss",
 	"denols",
+	"gopls",
 }
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
