@@ -182,8 +182,23 @@ require("lazy").setup({
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			local nullls = require("null-ls")
+			nullls.setup({
+				sources = {
+					nullls.builtins.formatting.prettier,
+					nullls.builtins.formatting.stylua,
+				},
+			})
+		end,
 	},
-	"ray-x/lsp_signature.nvim",
+	{
+		"ray-x/lsp_signature.nvim",
+		dependencies = { "neovim/nvim-lspconfig" },
+		config = function()
+			require("lsp_signature").setup({})
+		end,
+	},
 	"stevearc/dressing.nvim",
 	{
 		"folke/trouble.nvim",
@@ -270,7 +285,15 @@ require("lazy").setup({
 		"Julian/lean.nvim",
 	},
 
-	"lukas-reineke/indent-blankline.nvim",
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup({
+				show_current_context = true,
+				show_current_context_start = true,
+			})
+		end,
+	},
 })
 
 vim.cmd([[let g:neo_tree_remove_legacy_commands = 1]])
@@ -467,35 +490,6 @@ require("lean").setup({
 			lsp_set_keymap(client, bufnr)
 		end,
 	},
-})
-
--- lsp_signature
-require("lsp_signature").setup({})
-
--- null-ls
-local nullls = require("null-ls")
-nullls.setup({
-	sources = {
-		nullls.builtins.formatting.prettier,
-		nullls.builtins.formatting.stylua,
-	},
-})
-
--- Tree-sitter
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.satysfi = {
-	install_info = {
-		url = "https://github.com/monaqa/tree-sitter-satysfi",
-		files = { "src/parser.c", "src/scanner.c" },
-	},
-	filetype = "satysfi",
-}
-
--- Indent guide
-
-require("indent_blankline").setup({
-	show_current_context = true,
-	show_current_context_start = true,
 })
 
 -- General configurations
