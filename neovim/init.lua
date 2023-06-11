@@ -130,16 +130,21 @@ require("lazy").setup({
 		config = function()
 			require("legendary").setup({
 				keymaps = {
-					{ "<Space>ff", ":Telescope fd", description = "Find files using fd" },
-					{ "<Space>fg", ":Telescope live_grep", description = "Search files with string using ripgrep" },
-					{ "<Space>fu", ":Telescope undo", description = "Search across undo histories" },
+					{ "<Space>ff", ":Telescope fd<CR>", description = "Find files using fd" },
+					{ "<Space>fg", ":Telescope live_grep<CR>", description = "Search files with string using ripgrep" },
+					{ "<Space>fu", ":Telescope undo<CR>", description = "Search across undo histories" },
 
-          { "<Space>e", ":Neotree reveal", description = "Open file explorer" },
+          { "<Space>e", ":Neotree reveal<CR>", description = "Open file explorer" },
 
           { "K", vim.lsp.buf.hover },
           { "<Space>la", vim.lsp.buf.code_action },
           { "<Space>lr", vim.lsp.buf.rename },
           { "<Space>lf", vim.lsp.buf.format },
+
+          { "<Space>gs", ":Gitsigns stage_hunk<CR>", description = "Stage the hunk under cursor" },
+          { "<Space>gj", ":Gitsigns next_hunk<CR>", description = "Jump to the next hunk" },
+          { "<Space>gk", ":Gitsigns prev_hunk<CR>", description = "Jump to the previous hunk" },
+          { "<Space>gd", ":Gitsigns diffthis<CR>", description = "Show diff of current file" },
 				},
 			})
 		end,
@@ -258,11 +263,6 @@ require("lazy").setup({
 					delay = 300,
 				},
 			})
-
-			vim.keymap.set("n", "<Space>gs", gitsigns.stage_hunk)
-			vim.keymap.set("n", "<Space>gj", gitsigns.next_hunk)
-			vim.keymap.set("n", "<Space>gk", gitsigns.prev_hunk)
-			vim.keymap.set("n", "<Space>gd", gitsigns.diffthis)
 
 			require("scrollbar.handlers.gitsigns").setup()
 		end,
