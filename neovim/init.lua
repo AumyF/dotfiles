@@ -308,12 +308,12 @@ require("lazy").setup({
 	{
 		"purescript-contrib/purescript-vim",
 		ft = "purescript",
-		config = function()
-			require("lean").setup({})
-		end,
 	},
 	{
 		"Julian/lean.nvim",
+		config = function()
+			require("lean").setup({})
+		end,
 	},
 
 	{
