@@ -125,6 +125,22 @@ require("lazy").setup({
 	},
 
 	{
+		"mrjones2014/legendary.nvim",
+		version = "v2.10.0",
+		config = function()
+			require("legendary").setup({
+				keymaps = {
+					{ "<Space>ff", ":Telescope fd", description = "Find files using fd" },
+					{ "<Space>fg", ":Telescope live_grep", description = "Search files with string using ripgrep" },
+					{ "<Space>fu", ":Telescope undo", description = "Search across undo histories" },
+
+          { "<Space>e", ":Neotree reveal", description = "Open file explorer" },
+				},
+			})
+		end,
+	},
+
+	{
 		"folke/which-key.nvim",
 		config = function()
 			vim.o.timeout = true
@@ -326,13 +342,6 @@ vim.cmd("command! -nargs=* Terminal vsplit | wincmd j | vertical resize 80 | ter
 
 local opts = { noremap = true, silent = true }
 
--- TeleScope
-vim.keymap.set("n", "<Space>tt", "<cmd>Telescope<CR>")
-vim.keymap.set("n", "<Space>tf", "<cmd>Telescope fd<CR>")
-vim.keymap.set("n", "<Space>tg", "<cmd>Telescope live_grep<CR>")
-vim.keymap.set("n", "<Space>u", "<cmd>Telescope undo<CR>")
-
-vim.keymap.set("n", "<Space>f", "<cmd>Neotree reveal<CR>")
 
 -- Move focus
 vim.keymap.set("n", "<Space>j", "<C-w>w")
