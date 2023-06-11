@@ -217,6 +217,14 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		event = { "BufNewFile", "BufRead" },
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
+	{
 		"ray-x/lsp_signature.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
