@@ -297,10 +297,22 @@ require("lazy").setup({
 	{
 		"ionide/Ionide-vim",
 		ft = "fsharp",
+    config = function ()
+      require("ionide").setup({})
+      vim.g["fsharp#fsautocomplete_command"] = {
+	      "dotnet",
+      	"fsautocomplete",
+      }
+
+      vim.g["fsharp#lsp_auto_setup"] = 0
+    end
 	},
 	{
 		"purescript-contrib/purescript-vim",
 		ft = "purescript",
+    config = function ()
+      require("lean").setup({})
+    end
 	},
 	{
 		"Julian/lean.nvim",
@@ -462,21 +474,6 @@ require("lspconfig").parol_ls.setup({
 -- SATySFi
 vim.cmd("autocmd BufNewFile,BufRead *.saty set filetype=satysfi")
 
--- F#
-vim.g["fsharp#fsautocomplete_command"] = {
-	"dotnet",
-	"fsautocomplete",
-}
-
-vim.g["fsharp#lsp_auto_setup"] = 0
-
-require("ionide").setup({
-})
-
-require("lean").setup({
-	lsp = {
-	},
-})
 
 -- General configurations
 
