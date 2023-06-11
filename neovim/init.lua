@@ -133,18 +133,16 @@ require("lazy").setup({
 					{ "<Space>ff", ":Telescope fd<CR>", description = "Find files using fd" },
 					{ "<Space>fg", ":Telescope live_grep<CR>", description = "Search files with string using ripgrep" },
 					{ "<Space>fu", ":Telescope undo<CR>", description = "Search across undo histories" },
+					{ "<Space>e", ":Neotree reveal<CR>", description = "Open file explorer" },
 
-          { "<Space>e", ":Neotree reveal<CR>", description = "Open file explorer" },
-
-          { "K", vim.lsp.buf.hover },
-          { "<Space>la", vim.lsp.buf.code_action },
-          { "<Space>lr", vim.lsp.buf.rename },
-          { "<Space>lf", vim.lsp.buf.format },
-
-          { "<Space>gs", ":Gitsigns stage_hunk<CR>", description = "Stage the hunk under cursor" },
-          { "<Space>gj", ":Gitsigns next_hunk<CR>", description = "Jump to the next hunk" },
-          { "<Space>gk", ":Gitsigns prev_hunk<CR>", description = "Jump to the previous hunk" },
-          { "<Space>gd", ":Gitsigns diffthis<CR>", description = "Show diff of current file" },
+					{ "K", vim.lsp.buf.hover },
+					{ "<Space>la", vim.lsp.buf.code_action },
+					{ "<Space>lr", vim.lsp.buf.rename },
+					{ "<Space>lf", vim.lsp.buf.format },
+					{ "<Space>gs", ":Gitsigns stage_hunk<CR>", description = "Stage the hunk under cursor" },
+					{ "<Space>gj", ":Gitsigns next_hunk<CR>", description = "Jump to the next hunk" },
+					{ "<Space>gk", ":Gitsigns prev_hunk<CR>", description = "Jump to the previous hunk" },
+					{ "<Space>gd", ":Gitsigns diffthis<CR>", description = "Show diff of current file" },
 				},
 			})
 		end,
@@ -297,22 +295,22 @@ require("lazy").setup({
 	{
 		"ionide/Ionide-vim",
 		ft = "fsharp",
-    config = function ()
-      require("ionide").setup({})
-      vim.g["fsharp#fsautocomplete_command"] = {
-	      "dotnet",
-      	"fsautocomplete",
-      }
+		config = function()
+			require("ionide").setup({})
+			vim.g["fsharp#fsautocomplete_command"] = {
+				"dotnet",
+				"fsautocomplete",
+			}
 
-      vim.g["fsharp#lsp_auto_setup"] = 0
-    end
+			vim.g["fsharp#lsp_auto_setup"] = 0
+		end,
 	},
 	{
 		"purescript-contrib/purescript-vim",
 		ft = "purescript",
-    config = function ()
-      require("lean").setup({})
-    end
+		config = function()
+			require("lean").setup({})
+		end,
 	},
 	{
 		"Julian/lean.nvim",
@@ -359,7 +357,6 @@ vim.cmd("command! -nargs=* Terminal vsplit | wincmd j | vertical resize 80 | ter
 
 local opts = { noremap = true, silent = true }
 
-
 -- Move focus
 vim.keymap.set("n", "<Space>j", "<C-w>w")
 vim.keymap.set("n", "<Space>k", "<C-w>W")
@@ -381,7 +378,6 @@ vim.keymap.set("n", "<Space>hc", "<cmd>HopChar1<CR>")
 
 -- Language servers
 
-
 local servers = {
 	"rust_analyzer",
 	"ocamllsp",
@@ -399,8 +395,7 @@ local servers = {
 	"gopls",
 }
 for _, lsp in pairs(servers) do
-	require("lspconfig")[lsp].setup({
-	})
+	require("lspconfig")[lsp].setup({})
 end
 
 -- In some languages we prefer to use external formatters (i.e. Prettier) rather than ones servers provide
@@ -468,12 +463,10 @@ if not configs.parol_ls then
 	}
 end
 
-require("lspconfig").parol_ls.setup({
-})
+require("lspconfig").parol_ls.setup({})
 
 -- SATySFi
 vim.cmd("autocmd BufNewFile,BufRead *.saty set filetype=satysfi")
-
 
 -- General configurations
 
