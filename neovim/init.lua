@@ -135,6 +135,11 @@ require("lazy").setup({
 					{ "<Space>fu", ":Telescope undo", description = "Search across undo histories" },
 
           { "<Space>e", ":Neotree reveal", description = "Open file explorer" },
+
+          { "K", vim.lsp.buf.hover },
+          { "<Space>la", vim.lsp.buf.code_action },
+          { "<Space>lr", vim.lsp.buf.rename },
+          { "<Space>lf", vim.lsp.buf.format },
 				},
 			})
 		end,
@@ -364,12 +369,6 @@ vim.keymap.set("n", "<Space>hc", "<cmd>HopChar1<CR>")
 
 -- Language servers
 
-local lsp_set_keymap = function(client, bufnr)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.keymap.set("n", "<Space>lca", vim.lsp.buf.code_action, opts)
-	vim.keymap.set("n", "<Space>lrn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("n", "<Space>lf", vim.lsp.buf.format, opts)
-end
 
 local servers = {
 	"rust_analyzer",
@@ -389,9 +388,6 @@ local servers = {
 }
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
-		on_attach = function(client, bufnr)
-			lsp_set_keymap(client, bufnr)
-		end,
 	})
 end
 
@@ -400,16 +396,12 @@ local formatting_disabled_servers = { "jsonls", "html", "cssls", "tsserver" }
 for _, lsp in pairs(formatting_disabled_servers) do
 	require("lspconfig")[lsp].setup({
 		on_attach = function(client, bufnr)
-			lsp_set_keymap(client, bufnr)
 			client.server_capabilities.document_formatting = false
 		end,
 	})
 end
 
 require("lspconfig").eslint.setup({
-	on_attach = function(client, bufnr)
-		lsp_set_keymap(client, bufnr)
-	end,
 	settings = {
 		experimental = { useFlatConfig = true },
 	},
@@ -420,9 +412,6 @@ require("lspconfig").graphql.setup({
 })
 
 require("lspconfig").metals.setup({
-	on_attach = function(client, bufnr)
-		lsp_set_keymap(client, bufnr)
-	end,
 	root_dir = require("lspconfig.util").root_pattern(
 		".scala-build",
 		"build.sbt",
@@ -444,9 +433,6 @@ require("lspconfig").lua_ls.setup({
 		workspace = { library = vim.api.nvim_get_runtime_file("", true) },
 		telemetry = { enable = false },
 	},
-	on_attach = function(client, bufnr)
-		lsp_set_keymap(client, bufnr)
-	end,
 })
 
 -- Parol
@@ -471,9 +457,6 @@ if not configs.parol_ls then
 end
 
 require("lspconfig").parol_ls.setup({
-	on_attach = function(client, bufnr)
-		lsp_set_keymap(client, bufnr)
-	end,
 })
 
 -- SATySFi
@@ -488,16 +471,10 @@ vim.g["fsharp#fsautocomplete_command"] = {
 vim.g["fsharp#lsp_auto_setup"] = 0
 
 require("ionide").setup({
-	on_attach = function(client, bufnr)
-		lsp_set_keymap(client, bufnr)
-	end,
 })
 
 require("lean").setup({
 	lsp = {
-		on_attach = function(client, bufnr)
-			lsp_set_keymap(client, bufnr)
-		end,
 	},
 })
 
