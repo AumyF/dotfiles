@@ -233,6 +233,12 @@ require("lazy").setup({
 	},
 	"stevearc/dressing.nvim",
 	{
+		"rcarriga/nvim-notify",
+		config = function()
+			vim.notify = require("notify")
+		end,
+	},
+	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		cmd = "Trouble",
