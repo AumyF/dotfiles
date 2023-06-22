@@ -328,13 +328,8 @@ require("lazy").setup({
 		"ionide/Ionide-vim",
 		ft = "fsharp",
 		config = function()
-			require("ionide").setup({})
-			vim.g["fsharp#fsautocomplete_command"] = {
-				"dotnet",
-				"fsautocomplete",
-			}
-
 			vim.g["fsharp#lsp_auto_setup"] = 0
+			require("ionide").setup({ cmd = { "dotnet", "fsautocomplete" } })
 		end,
 	},
 	{
@@ -343,6 +338,7 @@ require("lazy").setup({
 	},
 	{
 		"Julian/lean.nvim",
+		ft = "lean",
 		config = function()
 			require("lean").setup({})
 		end,
