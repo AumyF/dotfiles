@@ -15,8 +15,25 @@ vim.opt.rtp:prepend(lazypath)
 -- Packages
 require("lazy").setup({
 	-- LSP
-	"neovim/nvim-lspconfig",
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = "williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "svelte" },
+			})
+		end,
+	},
 
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		config = function()
+			local lspconfig = require("lspconfig")
+			lspconfig.svelte.setup({})
+		end,
+	},
 	-- Completions
 	{
 		"hrsh7th/nvim-cmp",
@@ -97,6 +114,7 @@ require("lazy").setup({
 					"prisma",
 					"rust",
 					"scheme",
+					"svelte",
 					"toml",
 					"typescript",
 					"tsx",
