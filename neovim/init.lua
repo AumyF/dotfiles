@@ -75,9 +75,6 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				autotag = {
-					enable = true,
-				},
 				indent = {
 					enable = true,
 				},
@@ -266,11 +263,19 @@ require("lazy").setup({
 	},
 	"machakann/vim-sandwich",
 	{
+		"fedepujol/move.nvim",
+	},
+	{
 		"phaazon/hop.nvim",
 		branch = "v2",
 	},
 	{ "windwp/nvim-autopairs", event = "InsertEnter" },
-	{ "windwp/nvim-ts-autotag", event = "InsertEnter" },
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -419,7 +424,7 @@ local servers = {
 	"purescriptls",
 	"volar",
 	"unocss",
-	"denols",
+	-- "denols",
 	"gopls",
 }
 for _, lsp in pairs(servers) do
