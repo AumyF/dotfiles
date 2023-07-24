@@ -151,8 +151,12 @@ require("lazy").setup({
 					{ "<Space>e", ":Neotree reveal<CR>", description = "Open file explorer" },
 
 					{ "K", vim.lsp.buf.hover },
+					{ "gd", vim.lsp.buf.definition, description = "Go to definition (LSP)" },
+					{ "gD", vim.lsp.buf.declaration, description = "Go to declaration (LSP)" },
+					{ "gi", vim.lsp.buf.implementation, description = "Go to implementation (LSP)" },
+					{ "<Space>lr", vim.lsp.buf.references, description = "Go to references (LSP)" },
 					{ "<Space>la", vim.lsp.buf.code_action },
-					{ "<Space>lr", vim.lsp.buf.rename },
+					{ "<Space>r", vim.lsp.buf.rename },
 					{ "<Space>lf", vim.lsp.buf.format },
 					{ "<Space>gs", ":Gitsigns stage_hunk<CR>", description = "Stage the hunk under cursor" },
 					{ "<Space>gj", ":Gitsigns next_hunk<CR>", description = "Jump to the next hunk" },
@@ -206,14 +210,6 @@ require("lazy").setup({
 			require("telescope").load_extension("file_browser")
 			require("telescope").load_extension("fzf")
 		end,
-	},
-
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-		keys = {
-			{ "<Space>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>" },
-		},
 	},
 
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
