@@ -40,39 +40,42 @@ const deploy = defineTask([
 const nixProfileInstall = (
   /** @example "nixpkgs#deno" */ pkg: string,
 ) =>
-  async () => {
-    const process = Deno.run({
-      cmd: ["nix", "profile", "install", pkg],
+async () => {
+  const c = new Deno.Command("nix", {
+    args: ["nix", "profile", "install", pkg],
+  });
+  const status = await c.spawn().status;
+  if (!status.success) {
+    throw new Error(
+      `Installing "${pkg}" with Nix failed with status code ${status.code}`,
+    );
+  }
+};
+
+/** Useful for creating `check` to check whether a command installed successfully */
+const processSuceeds =
+  ([cmd, ...args]: [string, ...string[]]): Action["check"] => async () => {
+    const process = new Deno.Command(cmd, {
+      args,
+      stdout: "null",
+      stderr: "piped",
     });
 
-    await process.status();
-  };
+    const { success, stderr } = await process.output();
 
-/** Useful for creating `stat` to check whether a command installed successfully */
-const processSuceeds =
-  (cmd: [string, ...string[]]): Action["check"] => async () => {
-    let process;
-    try {
-      process = Deno.run({ cmd, stdout: "null", stderr: "piped" });
-    } catch (e) {
-      return { name: cmd[0], ok: false, message: e };
+    if (success) {
+      return { name: cmd, ok: true };
     }
 
-    const status = await process.status();
-
-    if (status.success) {
-      return { name: cmd[0], ok: true };
-    }
-
-    const stderr = await process.stderrOutput().then((out) =>
-      new TextDecoder().decode(out)
-    );
+    const stderrText = new TextDecoder().decode(stderr);
 
     // TODO Ability to show full stderr
-    const message = wrapIterator(iteratorFrom(stderr.split("\n")[0])).take(80)
+    const message = wrapIterator(iteratorFrom(stderrText.split("\n")[0])).take(
+      80,
+    )
       .reduce((acc, c) => acc + c, "");
 
-    return { name: cmd[0], ok: false, message };
+    return { name: cmd, ok: false, message };
   };
 
 const installCliByNix = (pkg: string, checkCommand: [string, ...string[]]) => ({
