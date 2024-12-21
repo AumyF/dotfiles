@@ -22,7 +22,9 @@ SAVEHIST=10000
 # Load Nix (single-user installation)
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi
 
-type starship &> /dev/null && eval "$(starship init zsh)"
+zinit light sindresorhus/pure
+# prompt pure
+
 type zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
 export MCFLY_FUZZY=2
