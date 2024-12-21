@@ -35,7 +35,6 @@ chpwd() {
     lsd --long --classify --date "+%F %T"
 }
 
-zinit ice wait
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait
