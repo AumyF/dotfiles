@@ -1,44 +1,45 @@
 # dotfiles
 
-@AumyF's dotfiles written in Dhall.
+@AumyF's dotfiles for macOS and Linux.
 
 ## Setup
 
-### Requirements
+note: This section is written in Japanese since it is primarily for me.
 
-- multi-user mode installation of Nix
-  - single-user mode users may require additional configuration in `~/.zshrc`
-- Homebrew (macOS) or Pacman (Arch Linux) to install OS-specific softwares.
-  
-Windows users can use WSL2, although only single-user mode works on it.
-  
-### Install Nix
+### Nixを入れる
 
-See https://nixos.org/download.html or run
+- ググれ
+  - というかNixOS公式とDeterminate Systemsのインストーラーがあり、Determinate
+    SystemsのインストーラーだとmacOSでアプデに巻き込まれて死ににくい、アンインストールしやすいといわれている（要出典）
 
-```sh
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
+### リポジトリをcloneする
 
-### Clone Repository
-
-It is recommended to clone the repo to `~/ghq/github.com/AumyF/dotfiles` to be consistent with ghq.
+- 実際どこでもいいけど `ghq` が使うディレクトリ構造に合わせている
 
 ```sh
 git clone https://github.com/AumyF/dotfiles ~/ghq/github.com/AumyF/dotfiles
 ```
 
-### Naming Conventions
+### 実行
 
-- `*-install.dhall` installs softwares.
-- `*-deploy.dhall` creates symlinks which references to the cloned repo's files.
-- `tachyon-*` means macOS specific settings (tachyon is the host name of my Mac machines).
-- `cafe-*` means Arch Linux specific settings (cafe is the same but of Linux).
-- `shared-*` means sharable configs between Nix-installed systems.
+```sh
+# 必要なソフトウェア（direnvとかripgrepとか）を入れる
+nix run nixpkgs#deno -- run -A dotfiles.ts setup run
 
-### Run Commands
+# こういう感じでもいい
+nix shell nixpkgs#deno
+# ↑実行するとDenoのパス通ったシェルが開くので、↓
+deno -- run -A dotfiles.ts setup run
 
-1. `nix-shell` to set up `jq` and `dhall-to-json`.
-2. `dhall-to-json --file <file> | jq -r ".commands[]"` to preview commands.
-3. `eval $(dhall-to-json --file <file> | jq -r ".commands[]")` to run commands.
+# 以降はめんどくさいのでdenoから書く
 
+# 必要なソフトが入ってるか確認する
+deno -- run -A dotfiles.ts setup
+
+# 設定ファイル類を各種ロケーションに配置する
+# いまのところシンボリックリンクを貼っている
+deno -- run -A dotfiles.ts deploy run
+
+# 確認
+deno -- run -A dotfiles.ts deploy
+```
