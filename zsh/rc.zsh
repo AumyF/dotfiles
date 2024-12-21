@@ -37,6 +37,7 @@ chpwd() {
     lsd --long --classify --date "+%F %T"
 }
 
+zinit light azu/ni.zsh
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid
