@@ -15,10 +15,6 @@ const home = Deno.env.get("HOME");
 if (!home) throw new Error("$HOME is not set");
 
 const deploy = defineTask([
-  link({
-    source: "./starship/starship.toml",
-    destination: `${home}/.config/starship.toml`,
-  }),
   link({ source: "./git/config", destination: `${home}/.config/git/config` }),
   link({ source: "./git/ignore", destination: `${home}/.config/git/ignore` }),
   link({
@@ -97,7 +93,6 @@ const setup = defineTask([
   installCliByNix("nixpkgs#lsd", ["lsd", "--version"]),
   installCliByNix("nixpkgs#mcfly", ["mcfly", "--version"]),
   installCliByNix("nixpkgs#ripgrep", ["rg", "--version"]),
-  installCliByNix("nixpkgs#starship", ["starship", "--version"]),
   installCliByNix("nixpkgs#tealdeer", ["tldr", "--version"]),
   installCliByNix("nixpkgs#zellij", ["zellij", "--version"]),
   installCliByNix("nixpkgs#zoxide", ["zoxide", "--version"]),
