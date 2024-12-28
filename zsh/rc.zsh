@@ -10,8 +10,6 @@ fi
 # Load zinit
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 
-autoload -U compinit; compinit
-
 setopt auto_cd
 
 setopt hist_ignore_all_dups
@@ -22,8 +20,8 @@ SAVEHIST=10000
 # Load Nix (single-user installation)
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi
 
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
-# prompt pure
 
 type zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
@@ -38,7 +36,15 @@ chpwd() {
 }
 
 zinit light azu/ni.zsh
-zinit light zsh-users/zsh-autosuggestions
 
-zinit ice wait lucid
-zinit light zdharma-continuum/fast-syntax-highlighting
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        zdharma-continuum/fast-syntax-highlighting \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
+
+if (which zprof > /dev/null) ;then
+    zprof | less
+fi

@@ -1,3 +1,6 @@
+# remove the hash below to enable zprof profiling
+# zmodload zsh/zprof
+
 path=(
     ~/.dotnet/tools
     ~/.ghcup/bin
