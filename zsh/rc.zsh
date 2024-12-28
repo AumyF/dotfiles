@@ -27,7 +27,8 @@ type zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
 export MCFLY_FUZZY=2
 export MCFLY_INTERFACE_VIEW=BOTTOM
-type mcfly &> /dev/null && eval "$(mcfly init zsh)"
+zinit ice lucid wait"0a" from"gh-r" as"program" atload'eval "$(mcfly init zsh)"'
+zinit light cantino/mcfly
 
 type direnv &> /dev/null && eval "$(direnv hook zsh)"
 
@@ -37,10 +38,10 @@ chpwd() {
 
 zinit light azu/ni.zsh
 
-zinit wait lucid for \
+zinit wait lucid light-mode for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
         zdharma-continuum/fast-syntax-highlighting \
-    blockf \
+    blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions \
     atload"!_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions
