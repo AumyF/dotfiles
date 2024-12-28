@@ -13,3 +13,6 @@ insert = "bar"
 
 [editor.indent-guides]
 render = true
+
+[editor.lsp]
+display-inlay-hints = true
