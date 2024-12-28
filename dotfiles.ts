@@ -31,6 +31,10 @@ const deploy = defineTask([
     source: "./wezterm/wezterm.lua",
     destination: `${home}/.config/wezterm/wezterm.lua`,
   }),
+  link({
+    source: "./helix/config.toml",
+    destination: `${home}/.config/helix/config.toml`,
+  }),
 ]);
 
 const nixProfileInstall = (
