@@ -47,7 +47,7 @@ zinit light azu/ni.zsh
 
 # source and explanation: https://zdharma-continuum.github.io/zinit/wiki/Example-Minimal-Setup/
 zinit wait lucid light-mode for \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    atinit"zicompinit; zicdreplay" \
         zdharma-continuum/fast-syntax-highlighting \
     blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions \
