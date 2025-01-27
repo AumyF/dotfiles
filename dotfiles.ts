@@ -35,6 +35,10 @@ const deploy = defineTask([
     source: "./helix/config.toml",
     destination: `${home}/.config/helix/config.toml`,
   }),
+  link({
+    source: "./nix-darwin",
+    destination: `${home}/.config/nix-darwin`,
+  }),
 ]);
 
 const nixProfileInstall = (
